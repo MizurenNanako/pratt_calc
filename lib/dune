@@ -1,0 +1,15 @@
+(library
+ (name lexer)
+ (modules lexer)
+ (libraries sedlex tokens)
+ (preprocess
+   (pps sedlex.ppx))
+)
+
+(library
+ (name tokens)
+ (modules tokens)
+ (libraries ppx_show.runtime)
+ (preprocess
+   (pps ppx_show))
+)

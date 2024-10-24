@@ -1,0 +1,4 @@
+(executable
+ (public_name pratt_calc)
+ (name main)
+ (libraries tokens lexer))
