@@ -3,13 +3,18 @@
  (modules lexer)
  (libraries sedlex tokens)
  (preprocess
-   (pps sedlex.ppx))
-)
+  (pps sedlex.ppx)))
 
 (library
  (name tokens)
  (modules tokens)
- (libraries ppx_show.runtime)
+ (libraries sexplib)
  (preprocess
-   (pps ppx_show))
-)
+  (pps ppx_sexp_conv)))
+
+(library
+ (name syntax)
+ (modules syntax)
+ (libraries sexplib)
+ (preprocess
+  (pps ppx_sexp_conv)))

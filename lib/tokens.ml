@@ -1,5 +1,7 @@
+open Sexplib.Conv
+
 module Num = struct
-  type t = float [@@deriving show]
+  type t = float [@@deriving sexp_of]
 
   let ( + ) = ( +. )
   let ( - ) = ( -. )
@@ -9,11 +11,11 @@ module Num = struct
 end
 
 module Op = struct
-  type t = Assign | Add | Sub | Mul | Div | Pow | Dot [@@deriving show]
+  type t = Assign | Add | Sub | Mul | Div | Pow | Dot [@@deriving sexp_of]
 end
 
 type token =
-  | Err of int * int
+  | Err of {lineno1: int; colno1: int; lineno2: int; colno2: int}
   | Num of float
   | Op of Op.t
   | Id of string
@@ -22,4 +24,4 @@ type token =
   | LB
   | RB
   | Eof
-[@@deriving show]
+[@@deriving sexp_of]
